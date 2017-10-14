@@ -1,5 +1,5 @@
 '''Initialization'''
-from flask import Flask, request, make_response
+from flask import Flask, request, make_response, redirect
 '''
 applicaton instance
 Flask uses name argument to determine the root path of the application
@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    return redirect('http://www.example.com')
     response = make_response('<h1>This document carries a cookie!</h1>')
     response.set_cookie('answer', '42')
     return response
