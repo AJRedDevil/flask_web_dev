@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    return '<h1>Bad Request</h1>', 400
     user_agent = request.headers.get('User-Agent')
     return '<p>Your browser is %s</p>' % user_agent
     return '<div>Hello world!<div>'
