@@ -1,5 +1,6 @@
 '''Initialization'''
 from flask import Flask, request, make_response, redirect, abort
+from flask.ext.script import Manager
 '''
 applicaton instance
 Flask uses name argument to determine the root path of the application
@@ -7,6 +8,7 @@ so that it later can find resource files relative to the location of the
 application.
 '''
 app = Flask(__name__)
+manager = Manager(app)
 
 @app.route('/')
 def index():
@@ -27,4 +29,4 @@ def user(id):
     return '<h1>Hello, %s!</h1>' % (user.name)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    manager.run()
