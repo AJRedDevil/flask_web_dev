@@ -1,5 +1,5 @@
 '''Initialization'''
-from flask import Flask
+from flask import Flask, request
 '''
 applicaton instance
 Flask uses name argument to determine the root path of the application
@@ -10,6 +10,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    user_agent = request.headers.get('User-Agent')
+    return '<p>Your browser is %s</p>' % user_agent
     return '<div>Hello world!<div>'
 
 @app.route('/user/<name>')
