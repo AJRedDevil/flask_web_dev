@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 from flask import Flask, render_template, session, redirect, url_for, flash
-from flask_script import Manager
+from flask_script import Manager, Shell
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_wtf import Form
@@ -26,7 +26,12 @@ app.config['SQLALCHEMY_DATABASE_URI'] = \
     'sqlite:///' + os.path.join(BASEDIR, 'data.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+
+def make_shell_context():
+    return dict(app=app, db=db, User=User, Role=Role)
+
 manager = Manager(app)
+manager.add_command("shell", Shell(make_context=make_shell_context))
 bootstrap = Bootstrap(app)
 moment = Moment(app)
 db = SQLAlchemy(app)
