@@ -12,7 +12,7 @@ Mako==1.0.7
 MarkupSafe==1.0
 SQLAlchemy==1.1.14
 WTForms==2.1
-Werkzeug==0.12.2
+Werkzeug==0.15.3
 alembic==0.9.6
 astroid==1.5.3
 backports.functools-lru-cache==1.4
